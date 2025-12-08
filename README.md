@@ -1,7 +1,7 @@
 # AWS S3 Static Website Deployment
 
 ## 📌 Project Overview
-This project demonstrates how to deploy a static website using **Amazon S3**.  
+This project demonstrates how to deploy a static website using **Amazon S3**. 
 It includes enabling static website hosting, configuring bucket policies, and deploying the site using CI/CD.
 
 ---
