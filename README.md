@@ -145,7 +145,6 @@ git add .
 git commit -m "Setup CI/CD pipeline"
 git push
 
-
-Summary
+## 📝 SUMMARY
 
 This project explains how to deploy a fully functional static website using AWS S3. We learned how to create a bucket, enable static website hosting, upload files, set bucket policies, and access your live site through the S3 endpoint. Advanced enhancements like CloudFront (for HTTPS & CDN) allows to scale this simple setup into a production-ready deployment. The guide also provides GitHub steps so you can manage your project with version control and keep everything organized.
