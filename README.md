@@ -74,4 +74,79 @@ http://sorting-algo-visualize.s3-website.ap-south-1.amazonaws.com
 Added CloudFront for HTTPS + CDN
 Added CI/CD deployment using GitHub Actions
 
-This project is open for learning and practice.
+CI/CD Pipeline Setup (GitHub Actions → S3)
+1. Create IAM User for CI/CD
+
+Go to IAM → Users → Create User
+
+Select Programmatic Access
+
+Attach policy: AmazonS3FullAccess (or a custom S3-only deploy policy)
+
+Save the Access Key ID and Secret Access Key
+
+2. Add Secrets in GitHub
+
+Go to:
+GitHub → Repository → Settings → Secrets → Actions → New Secret
+
+Add these:
+
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_REGION
+S3_BUCKET
+
+
+Example values:
+
+AWS_REGION = ap-south-1
+S3_BUCKET = sorting-algo-visualize
+
+3. Add GitHub Actions Workflow
+
+Create the file:
+
+.github/workflows/deploy.yml
+
+
+Paste this:
+
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Sync files to S3
+        run: |
+          aws s3 sync . s3://${{ secrets.S3_BUCKET }} --delete
+
+4. Push Code to GitHub
+
+Run:
+
+git add .
+git commit -m "Setup CI/CD pipeline"
+git push
+
+
+Summary
+
+This project explains how to deploy a fully functional static website using AWS S3. We learned how to create a bucket, enable static website hosting, upload files, set bucket policies, and access your live site through the S3 endpoint. Advanced enhancements like CloudFront (for HTTPS & CDN) allows to scale this simple setup into a production-ready deployment. The guide also provides GitHub steps so you can manage your project with version control and keep everything organized.
