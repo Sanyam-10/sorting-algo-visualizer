@@ -46,7 +46,7 @@ project/
   - Index document → `index.html`  
   - Error document → `error.html` (optional)
 
-### **3. Upload Your Website Files**
+### **3. Upload  Website Files**
 - Go to **Objects → Upload**  
 - Upload HTML, CSS, JS, and assets  
 
@@ -61,7 +61,7 @@ json
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::your-bucket-name/*"
+      "Resource": "arn:aws:s3:::sorting-algo-visualize/*"
     }
   ]
 }
