@@ -52,20 +52,19 @@ project/
 
 ### **4. Add Bucket Policy (Make Public)**
  *sorting-algo-visualize *:
-
-json 
+```json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::sorting-algo-visualize/*"
-    }
-  ]
+"Version": "2012-10-17",
+"Statement": [
+{
+"Effect": "Allow",
+"Principal": "",
+"Action": "s3:GetObject",
+"Resource": "arn:aws:s3:::sorting-algo-visualize/"
 }
-
+]
+}
+```
 5. Access  Website
 Open the S3 website endpoint:
 http://sorting-algo-visualize.s3-website.ap-south-1.amazonaws.com
